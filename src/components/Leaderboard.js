@@ -14,7 +14,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     const scoreData = async () => {
-      const response = await fetch(`http://localhost:3000/leaderboard/${filter}`);
+      const response = await fetch(`https://aqueous-atoll-74275.herokuapp.com/leaderboard/${filter}`);
       const userList = await response.json();
       setUsers(userList.users.sort((a, b) => {
         return a.score - b.score;
