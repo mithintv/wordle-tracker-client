@@ -19,7 +19,6 @@ const UserList = props => {
       prevUser = props.users[index - 1];
       if (prevUser.score === user.score) {
         user.ranking = prevUser.ranking;
-        console.log(user.ranking);
       }
     }
 
