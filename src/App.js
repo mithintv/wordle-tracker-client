@@ -1,9 +1,16 @@
+import React from "react";
 
-import UserList from './components/UserList';
+import Header from "./layout/Header";
+import Leaderboard from "./components/Leaderboard";
+
+import "./App.css";
 
 const App = () => {
   return (
-    <UserList />
+    <React.Fragment>
+      <Header />
+      <Leaderboard />
+    </React.Fragment>
   );
 };
 

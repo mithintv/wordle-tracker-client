@@ -1,0 +1,19 @@
+.container {
+  width: 30rem;
+  background-color: #FAFAFA;
+  box-shadow: 2.5px 5px 30px #e0e0e0
+}
+
+.button {
+  color: #212529;
+  width: 20%;
+  font-weight: 500;
+  border-radius: 0px;
+  border: none;
+  border-bottom: solid 2px #FAFAFA;
+}
+
+.button:hover {
+  border-radius: 0;
+  border-bottom: solid 2px #a1a1a1;
+}
