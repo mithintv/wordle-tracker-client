@@ -13,7 +13,12 @@
   border-bottom: solid 2px #FAFAFA;
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
   border-radius: 0;
+  border-bottom: solid 2px #a1a1a1;
+}
+
+.active {
   border-bottom: solid 2px #a1a1a1;
 }
