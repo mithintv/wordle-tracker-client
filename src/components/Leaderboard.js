@@ -4,9 +4,9 @@ import UserList from "./UserList";
 
 import classes from "./Leaderboard.module.css";
 
-let api = "";
-if (process.env.NODE_ENV === 'production') {
-  api = process.env.REACT_APP_API_URL;
+let api = process.env.REACT_APP_API_URL;
+if (process.env.NODE_ENV !== 'production') {
+  api = "http://localhost:3080";
 }
 
 const Leaderboard = () => {
