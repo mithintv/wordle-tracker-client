@@ -1,7 +1,25 @@
 .container {
   width: 30rem;
-  background-color: #FAFAFA;
+  background-color: #f9f9f9;
   box-shadow: 2.5px 5px 30px #e0e0e0
+}
+
+.icon:hover {
+  cursor: pointer;
+  animation-name: spin;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .button {
@@ -21,4 +39,42 @@
 
 .active {
   border-bottom: solid 2px #a1a1a1;
+}
+
+li.tab {
+  background-color: #f9f9f9;
+}
+
+li.tab>a {
+  color: #8e8e8e;
+}
+
+li.tab>a:hover {
+  background-color: #f9f9f9;
+  color: #575757;
+}
+
+li.tab:hover {
+  color: #f9f9f9
+}
+
+.tab-header>span {
+  font-size: 0.8rem;
+  color: #9a9a9a;
+}
+
+.tab-header,
+.tab-body {
+  background-color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 25rem;
+  }
+
+  .tab-header>span:nth-child(3) {
+    position: relative;
+    left: -6px;
+  }
 }

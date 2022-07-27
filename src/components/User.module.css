@@ -1,6 +1,14 @@
+.card {
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.1)
+}
+
 .row {
   width: 100%;
-  background-color: #ffffff;
+  background-color: #fff;
   /* border-radius: 25px; */
   box-shadow: 2.5px 5px 10px #e0e0e0
 }
@@ -9,8 +17,25 @@
   font-size: 0.95rem;
 }
 
-.avatar {
+.outline {
+  display: flex;
+  flex-shrink: 0;
+  height: calc(4.25rem);
+  width: calc(4.25rem);
+  background-color: #dfdfdf;
   border-radius: 50%;
+  border: 0.25rem solid #f4f4f4;
+  transition: 0.2s;
+}
+
+.outline:hover {
+  transform: scale(1.1)
+}
+
+.avatar {
+  width: 3.25rem;
+  border-radius: 50%;
+  margin: auto;
 }
 
 .name {
@@ -20,4 +45,20 @@
 .score {
   font-size: 1.3rem;
   color: #36B680
+}
+
+
+@media screen and (max-width: 480px) {
+  .outline {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .avatar {
+    width: 3.5rem;
+  }
+
+  .name {
+    width: 8rem;
+  }
 }

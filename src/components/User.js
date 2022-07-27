@@ -21,9 +21,11 @@ const User = props => {
           className={`col-2 text-center ${classes.place}`}>
           {props.ranking}{ordinal(props.ranking)}
         </span>}
-        <img className={`col-2 ${classes.avatar}`} src={props.image_url} alt={`${props.first_name} avatar`} />
-        <span className={`col-6 ${classes.name}`}>{props.first_name}</span>
-        <span className={`col-2 text-center ${classes.score}`}>{props.score}</span>
+        <div className={`col-2 p-0 ${classes.outline}`}>
+          <img className={`${classes.avatar}`} src={props.image_url} alt={`${props.first_name} avatar`} />
+        </div>
+        <span className={`col-5 ${classes.name}`}>{props.first_name}</span>
+        <span className={`col text-center ${classes.score}`}>{props.score}</span>
       </div>
     </div>
 
