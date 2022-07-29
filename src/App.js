@@ -1,4 +1,4 @@
-import React from "react";
+import { FilterContextProvider } from './context/filter-context';
 
 import Header from "./layout/Header";
 import Leaderboard from "./components/Leaderboard";
@@ -7,10 +7,10 @@ import "./App.css";
 
 const App = () => {
   return (
-    <React.Fragment>
+    <FilterContextProvider >
       <Header />
       <Leaderboard />
-    </React.Fragment>
+    </FilterContextProvider>
   );
 };
 

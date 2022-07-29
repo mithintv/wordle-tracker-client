@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import FilterContext from './../context/filter-context';
+
+import api from "../api/api";
 
 import UserList from "./UserList";
 
 import classes from "./Leaderboard.module.css";
 
-let api = process.env.REACT_APP_API_URL;
-// if (process.env.NODE_ENV !== 'production') {
-//   api = "http://localhost:3080";
-// }
 
 const Leaderboard = () => {
 
   const [weekly, setWeekly] = useState(true);
   const [monthly, setMonthly] = useState(false);
   const [all, setAll] = useState(false);
-  const [filter, setFilter] = useState('weekly');
   const [users, setUsers] = useState([]);
+
+  const ctx = useContext(FilterContext);
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(`${api}/leaderboard/${filter}`, {
+        const response = await fetch(`${api}/leaderboard/${ctx.filter}`, {
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           }
         });
         const userList = await response.json();
-        setUsers(userList.users.sort((a, b) => {
+        setUsers(userList.sort((a, b) => {
           return a.score - b.score;
         }));
       }
@@ -35,26 +35,26 @@ const Leaderboard = () => {
         console.log(err);
       }
     })();
-  }, [filter]);
+  }, [ctx.filter]);
 
 
   const weeklyHandler = () => {
-    setFilter('weekly');
     setWeekly(true);
     setMonthly(false);
     setAll(false);
+    ctx.filter = 'weekly';
   };
   const monthlyHandler = () => {
-    setFilter('monthly');
     setMonthly(true);
     setWeekly(false);
     setAll(false);
+    ctx.filter = 'monthly';
   };
   const allHandler = () => {
-    setFilter('all');
     setAll(true);
     setWeekly(false);
     setMonthly(false);
+    ctx.filter = 'all';
   };
 
   // const sentenceCase = filter.substring(0, 1).toUpperCase() + filter.substring(1);
@@ -103,7 +103,7 @@ const Leaderboard = () => {
         <div className={`row m-auto pt-2 ${classes['tab-header']}`}>
           <span className="col-2 text-center ps-4 pe-0 ms-1">Rank</span>
           <span className="col-6 ms-4 ps-1">User</span>
-          <span className="col-3 ms-0 ps-0 text-center">Avg Score</span>
+          <span className="col-3 ms-0 ps-0 text-center">Avg Guess</span>
         </div>
         <div className={`pt-1 ${classes['tab-body']}`}>
           <UserList users={users} />
