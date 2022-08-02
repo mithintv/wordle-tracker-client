@@ -9,7 +9,7 @@ export const FilterContextProvider = props => {
   return (
     <FilterContext.Provider
       value={
-        { filter: 'weekly' }
+        { filter: '7' }
       }>
       {props.children}
     </FilterContext.Provider>

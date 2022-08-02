@@ -39,7 +39,18 @@
 
 .score {
   font-size: 1.3rem;
-  color: #36B680
+  color: #50c57b
+}
+
+.chart {
+  width: 29rem;
+  height: 12rem;
+}
+
+.bar {
+  color: #78d765;
+  width: 29.5rem;
+  height: 15rem;
 }
 
 

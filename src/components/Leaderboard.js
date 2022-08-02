@@ -42,13 +42,13 @@ const Leaderboard = () => {
     setWeekly(true);
     setMonthly(false);
     setAll(false);
-    ctx.filter = 'weekly';
+    ctx.filter = '7';
   };
   const monthlyHandler = () => {
     setMonthly(true);
     setWeekly(false);
     setAll(false);
-    ctx.filter = 'monthly';
+    ctx.filter = '30';
   };
   const allHandler = () => {
     setAll(true);
@@ -94,8 +94,8 @@ const Leaderboard = () => {
 
         <div className="tabs is-centered is-boxed m-0">
           <ul>
-            <li href="#weekly" className={`${classes.tab} ${weekly ? "is-active" : ""}`} onClick={weeklyHandler}><a className={classes.tab} href="#weekly">Weekly</a></li>
-            <li href="#monthly" className={`${classes.tab} ${monthly ? "is-active" : ""}`} onClick={monthlyHandler}><a href="#monthly">Monthly</a></li>
+            <li href="#weekly" className={`${classes.tab} ${weekly ? "is-active" : ""}`} onClick={weeklyHandler}><a className={classes.tab} href="#weekly">Last 7 Days</a></li>
+            <li href="#monthly" className={`${classes.tab} ${monthly ? "is-active" : ""}`} onClick={monthlyHandler}><a href="#monthly">Last 30 Days</a></li>
             <li href="#all" className={`${classes.tab} ${all ? "is-active" : ""}`} onClick={allHandler}><a href="#all">All Time</a></li>
           </ul>
         </div>

@@ -6,7 +6,8 @@ import FilterContext from './../context/filter-context';
 import api from "../api/api";
 
 // Chart Tools
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
+import { ResponsiveTimeRange } from '@nivo/calendar';
+import { ResponsiveBar } from '@nivo/bar';
 
 // CSS Classes
 import classes from "./User.module.css";
@@ -45,7 +46,6 @@ const User = props => {
     setStats(prevState => !prevState);
   };
 
-
   return (
     <React.Fragment>
       <div className={`mx-2 mb-3 ${classes.card}`}>
@@ -63,16 +63,82 @@ const User = props => {
           <span className={`col-5 ${classes.name}`}>{props.first_name}</span>
           <span className={`col text-center ${classes.score}`}>{props.score}</span>
         </div>
-
-        {stats && <ResponsiveContainer className={`m-auto`} width="95%" height={225}>
-          <BarChart width={450} height={200} data={data}
-            margin={{ top: 25, right: 60, left: 10, bottom: 25 }}>
-            <XAxis dataKey="date" />
-            <YAxis tickCount={7} interval={1} ticks={[0, 1, 2, 3, 4, 5, 6, 7]} domain={[1, 7]} />
-            <Tooltip />
-            <Bar type="monotone" dataKey="score" fill="#82ca9d" />
-          </BarChart>
-        </ResponsiveContainer>}
+        {stats && <div className={classes.chart}><ResponsiveTimeRange
+          data={data}
+          from='2022-04'
+          to={Date.now()}
+          minValue={1}
+          maxValue={7}
+          emptyColor="#eeeeee"
+          colors={['#66BC62', '#A6D96A', '#D9EF8B', '#FEE08B', '#FCAE60', '#F46C42', '#D63126']}
+          margin={{ top: 30, right: 40, bottom: 0, left: 40 }}
+          weekdayTicks={[0, 1, 2, 3, 4, 5, 6, 7]}
+          dayBorderWidth={2}
+          dayBorderColor="#ffffff"
+          legends={[
+            {
+              anchor: 'right',
+              direction: 'row',
+              translateY: 50,
+              translateX: -100,
+              itemCount: 5,
+              itemWidth: 42,
+              itemHeight: 10,
+              itemsSpacing: 10,
+              itemDirection: 'right-to-left'
+            }
+          ]}
+        />
+        </div>}
+        {stats && <div className={classes.bar}><ResponsiveBar
+          data={data}
+          keys={[
+            'score',
+          ]}
+          indexBy="date"
+          maxValue={7}
+          margin={{ top: 25, right: 47.5, bottom: 60, left: 75 }}
+          reverse={true}
+          padding={0.1}
+          valueScale={{ type: 'linear' }}
+          indexScale={{ type: 'band', round: true }}
+          colors={['#78d765']}
+          axisTop={null}
+          axisRight={null}
+          axisBottom={ctx.filter === 'all' ? null :
+            {
+              tickSize: 2,
+              tickPadding: 5,
+              tickRotation: 45,
+              legend: 'Days Played',
+              legendPosition: 'middle',
+              legendOffset: 40
+            }}
+          gridYValues={6}
+          axisLeft={{
+            tickValues: 3,
+            tickSize: 4,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'guesses',
+            legendPosition: 'middle',
+            legendOffset: -40
+          }}
+          labelSkipWidth={12}
+          labelSkipHeight={12}
+          labelTextColor={{
+            from: 'color',
+            modifiers: [
+              [
+                'darker',
+                1.6
+              ]
+            ]
+          }}
+          role="application"
+          ariaLabel="Nivo bar chart demo"
+          barAriaLabel={function (e) { return e.id + ": " + e.formattedValue + " in country: " + e.indexValue; }}
+        /></div>}
       </div>
     </React.Fragment>
   );
