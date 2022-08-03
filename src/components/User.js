@@ -30,6 +30,7 @@ const User = props => {
       try {
         const response = await fetch(`${api}/user/${props.id}/${ctx.filter}`, {
           headers: {
+            'Authorization': process.env.REACT_APP_AUTH,
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           }

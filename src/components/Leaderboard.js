@@ -22,6 +22,7 @@ const Leaderboard = () => {
       try {
         const response = await fetch(`${api}/leaderboard/${ctx.filter}`, {
           headers: {
+            'Authorization': process.env.REACT_APP_AUTH,
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           }
